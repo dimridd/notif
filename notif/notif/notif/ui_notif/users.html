@@ -1,0 +1,23 @@
+/*users.html*/
+{% for user in users %}
+<!-- where each user is an objects of UserProfile model -->
+{{ user.address|capfirst }}<br />
+
+{% endfor %}
+
+<div class="pagination">
+<span class="step-links">
+{% if users.has_previous %}
+<a href="?page={{ users.previous_page_number }}">previous</a>
+{% endif %}
+
+<!-- Showing the page numbers in Html Page -->
+<span class="current">
+Page {{ users.number }} of {{ users.paginator.num_pages }}.
+</span>
+
+{% if users.has_next %}
+<a href="?page={{ users.next_page_number }}">next</a>
+{% endif %}
+</span>
+</div>
